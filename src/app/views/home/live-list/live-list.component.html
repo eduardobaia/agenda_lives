@@ -1,5 +1,6 @@
 <mat-tab-group style="padding-top: 40px; padding-left: 2%; padding-right: 2%;">
     <mat-tab label="PRÓXIMAS">
+        <mat-progress-bar mode="indeterminate" *ngIf="!next"></mat-progress-bar>
         <div fxLayout="row wrap" f1q xLayoutAlign="start center" style="padding: 2%">
             <!-- <div fxFlex="100" style="margin-left: 0.5%; font-weight: bold;">PRÓXIMAS</div> -->
             <div *ngFor="let live of livesNext" style="margin: 0.5%;">
@@ -36,6 +37,7 @@
     </mat-tab>
 
     <mat-tab label="REALIZADAS">
+        <mat-progress-bar mode="indeterminate" *ngIf="!previews"></mat-progress-bar>
         <div fxLayout="row wrap" fxLayoutAlign="start center" style="padding: 2%">
             <!-- <div fxFlex="100" style="margin-left: 0.5%; font-weight: bold;">REALIZADAS</div> -->
             <ng-container *ngFor="let live of livesPrevious" style="margin: 0.5%;">

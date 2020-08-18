@@ -14,9 +14,11 @@ export class LiveListComponent implements OnInit {
 
   livesPrevious: Live[];
   livesNext: Live[];
+  next: boolean = false;
+  previews: boolean = false;
 
   constructor(private service: LiveService,
-              private sanitizer: DomSanitizer) { }
+    private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.getLives();
@@ -28,8 +30,9 @@ export class LiveListComponent implements OnInit {
       data => {
         this.livesPrevious = data.content;
         this.livesPrevious.forEach(live => {
-            live.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(live.liveLink);
+          live.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(live.liveLink);
         });
+        this.previews = true;
       });
 
 
@@ -38,7 +41,8 @@ export class LiveListComponent implements OnInit {
         this.livesNext = data.content;
         this.livesNext.forEach(live => {
           live.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(live.liveLink);
-      });
+        });
+        this.next = true;
       });
 
   }
